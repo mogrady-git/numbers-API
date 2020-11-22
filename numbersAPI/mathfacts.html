@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Math Facts</title>
+    <style>
+        #fact {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-dark">
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="http://numbersapi.com/">Numbers API Project</a>
+          </li>           
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="mathfacts.html">Math Facts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="triviafacts.html">Trivia Facts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="yearfacts.html">Year Facts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="datefacts.html">Date Facts</a>
+      </li>
+    </ul>
+  </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card bg-primary text-white mt-5 p-4 text-center">
+                    <h1>Math Facts</h1>
+                    <p>Enter a number and get a random Mathematical fact</p>
+                    <input type="number" class="form-control form-control-lg" id="numberInput" placeholder="Enter any number...">
+                    <div id="fact" class="card-body">
+                        <h4 class="card-title">
+                            Mathematical Fact
+                        </h4>
+                        <p id="factText" class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let fact = document.querySelector('#fact');
+        let factText = document.querySelector('#factText');
+    
+        let numberInput = document.querySelector('#numberInput');
+//  Fetch API
+        numberInput.addEventListener('input', getFactFetch);
+//  XHR 
+//      numberInput.addEventListener('input', getFactAjax);
+
+
+        /*
+        // Fetch with XHR
+        function getFactAjax(){
+          let number = numberInput.value;
+          if(number != ''){
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://numbersapi.com/'+number);
+      
+            xhr.onload = function(){
+              if(this.status == 200){
+                fact.style.display = 'block';
+                factText.innerText = this.responseText;
+              }
+            }
+      
+            xhr.send(); 
+            }
+        }
+
+        */
+
+        // Fetch with Fetch API
+
+        function getFactFetch(){
+          let number = numberInput.value;
+          
+          if(number != ''){
+            fetch('http://numbersapi.com/'+number +'/math')
+            .then(response => response.text())
+            .then(data => {
+              fact.style.display = 'block';
+              factText.innerText = data;
+            })
+            .catch(err => console.log(err)); 
+          }
+        }
+        
+      </script>
+</body>
+</html>

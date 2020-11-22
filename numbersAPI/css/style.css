@@ -1,0 +1,15 @@
+
+@media only screen and (max-width: 600px) and (min-width: 400px){
+    #customfooter {
+    background-color: #007bff; 
+    margin-top: 100px;
+    }
+}
+
+@media only screen and (max-width: 2280px) and (min-width: 600px){
+    #customfooter {
+    background-color: #007bff; 
+    margin-top: 257px;
+    }
+}
+
