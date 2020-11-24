@@ -1,8 +1,16 @@
+body {
+    width: 100%;
+    margin: auto;
+}
 
 @media only screen and (max-width: 600px) and (min-width: 400px){
     #customfooter {
     background-color: #007bff; 
     margin-top: 100px;
+    }
+
+    .container {
+        padding-bottom: 500px;
     }
 }
 
