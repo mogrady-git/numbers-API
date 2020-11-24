@@ -1,40 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Math Facts</title>
-    <style>
-        #fact {
-            display: none;
-        }
-    </style>
-</head>
-<body class="bg-dark">
-  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="http://numbersapi.com/">Numbers API Project</a>
-          </li>           
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">Home</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="mathfacts.html">Math Facts</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="triviafacts.html">Trivia Facts</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="yearfacts.html">Year Facts</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="datefacts.html">Date Facts</a>
-      </li>
-    </ul>
-  </nav>
-    <div class="container">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="This is a project using Fetch with XHR & Fetch with Fetch API">
+    <meta name="author" content="Michael O'Grady">
+    <title>Numbers API Project</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+          <div class="inner">
+            <h3 class="masthead-brand"><a href="http://numbersapi.com">Numbers API Project</a></h3>
+            <nav class="nav nav-masthead justify-content-center">
+              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link active" href="mathfacts.html">Math Facts</a>
+              <a class="nav-link" href="triviafacts.html">Trivia Facts</a>
+              <a class="nav-link" href="yearfacts.html">Year Facts</a>
+              <a class="nav-link" href="datefacts.html">Date Facts</a>
+            </nav>
+          </div>
+      </header>
+      <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
                 <div class="card bg-primary text-white mt-5 p-4 text-center">
@@ -50,66 +39,56 @@
                 </div>
             </div>
         </div>
-    </div>
+      </div>
 
-    <script>
-        let fact = document.querySelector('#fact');
-        let factText = document.querySelector('#factText');
-    
-        let numberInput = document.querySelector('#numberInput');
-//  Fetch API
-        numberInput.addEventListener('input', getFactFetch);
-//  XHR 
-//      numberInput.addEventListener('input', getFactAjax);
-
-
-        /*
-        // Fetch with XHR
-        function getFactAjax(){
-          let number = numberInput.value;
-          if(number != ''){
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET', 'http://numbersapi.com/'+number);
-      
-            xhr.onload = function(){
-              if(this.status == 200){
-                fact.style.display = 'block';
-                factText.innerText = this.responseText;
-              }
-            }
-      
-            xhr.send(); 
-            }
-        }
-
-        */
-
-        // Fetch with Fetch API
-
-        function getFactFetch(){
-          let number = numberInput.value;
+        <script>
+            let fact = document.querySelector('#fact');
+            let factText = document.querySelector('#factText');
+            let numberInput = document.querySelector('#numberInput');
+        //  Fetch API
+            numberInput.addEventListener('input', getFactFetch);
+        //  XHR 
+        //  numberInput.addEventListener('input', getFactAjax);
+            /*
+            // Fetch with XHR
+            function getFactAjax(){
+              let number = numberInput.value;
+              if(number != ''){
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', 'http://numbersapi.com/'+number);
           
-          if(number != ''){
-            fetch('http://numbersapi.com/'+number +'/math')
-            .then(response => response.text())
-            .then(data => {
-              fact.style.display = 'block';
-              factText.innerText = data;
-            })
-            .catch(err => console.log(err)); 
-          }
-        }
-        
-      </script>
-        <!-- Footer -->
-        <footer class="page-footer" id="customfooter">    
-          <!-- Copyright -->
-          <div class="footer-copyright text-center py-3">© 2020
-            <a href="http://www.michaelogrady.net/" style="color: #fff;"> Michael O'Grady</a>
-          </div>
-          <!-- Copyright -->
-        
-        </footer>
-        <!-- Footer -->
-</body>
+                xhr.onload = function(){
+                  if(this.status == 200){
+                    fact.style.display = 'block';
+                    factText.innerText = this.responseText;
+                  }
+                }
+
+                xhr.send(); 
+                }
+            }
+            */
+            // Fetch with Fetch API
+
+            function getFactFetch(){
+              let number = numberInput.value;
+              
+              if(number != ''){
+                fetch('http://numbersapi.com/'+number +'/math')
+                .then(response => response.text())
+                .then(data => {
+                  fact.style.display = 'block';
+                  factText.innerText = data;
+                })
+                .catch(err => console.log(err)); 
+              }
+            }            
+          </script>
+      <footer class="mt-auto">
+        <div class="inner">
+          <p>&copy;<a href="http://www.michaelogrady.net/" style="color: #fff;"> Michael O'Grady</a></p>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>
